@@ -5,12 +5,12 @@ import Navbar from '../Navbar/Navbar';
 
 const Main = () => {
     return (
-        <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            <Footer></Footer>
-        </div>
-    );
+			<div className='bg-[#090a27]'>
+				<Navbar></Navbar>
+				<Outlet></Outlet>
+				<Footer></Footer>
+			</div>
+		);
 };
 
 export default Main;

@@ -1,0 +1,32 @@
+[
+    {
+        "img": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2019/10/Karthika-Gupta-Compelling-Nature-Photos-6.jpg?fit=1500%2C1000&ssl=1", 
+        "title": "Nature images",
+        "description": "Nature produces the most astoundingly beautiful images: the swirling lava of a volcano, palm trees against a blue sky, snow-capped mountains towering above. Unsplash has magnificent , high-quality photos of all the delights that nature has to offer."
+    },
+    {
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm2TFQecuu4q9oZBGyHECoizuDTc341oIv6B1Jy6zPs5RqUMmQ9cIkKIl7S3kALIv4y7A&usqp=CAU", 
+        "title": "Street photography",
+        "description": "Street photography can focus on people and their behavior in public, thereby also recording people's history. This motivation entails having also to navigate or negotiate changing expectations and laws of privacy, security and property. In this respect the street photographer is similar to social documentary photographers or photojournalists who also work in public places, but with the aim of capturing newsworthy events; any of these photographers' images may capture people and property visible within or from public places."
+    },
+    {
+        "img": "https://upload.wikimedia.org/wikipedia/commons/e/e1/US_Navy_120209-N-XD935-302_Mass_Communication_Specialist_1st_Class_Shane_Tuck%2C_assigned_to_the_Expeditionary_Combat_Camera_Underwater_Photo_Team%2C_c.jpg", 
+        "title": "Ocean photography",
+        "description": "Almost every underwater photo is taken with a flash. We use flashguns on short, adjustable arms on either side of the camera to light up a subject. Water as you go deeper absorbs all the colour so if you don't use a flash you'll end up with blue or green pictures.Flashguns take time and skill to get used to."
+    },
+    {
+        "img": "https://llandscapes-10674.kxcdn.com/wp-content/uploads/2015/09/7.jpg", 
+        "title": "Mountains photography",
+        "description": "High elevations on mountains produce colder climates than at sea level at similar latitude. These colder climates strongly affect the ecosystems of mountains: different elevations have different plants and animals. Because of the less hospitable terrain and climate, mountains tend to be used less for agriculture and more for resource extraction, such as mining and logging, along with recreation, such as mountain climbing and skiing."
+    },
+    {
+        "img": "https://mymodernmet.com/wp/wp-content/uploads/2021/05/sun-photos-krutik-thakur-8.jpeg", 
+        "title": "Sun photography",
+        "description": "Most any color camera, such as a DSLR or mirrorless camera can capture a pleasing white light image, so you can use pretty much any camera you already have. Solar photography is easy but great care must be taken when pointing any telephoto lens or telescope at the Sun."
+    },
+    {
+        "img": "https://i.pinimg.com/736x/41/4b/e2/414be285b647fde93adec246ac0bf558.jpg", 
+        "title": "Unique photography",
+        "description": "Creative photography is a technique by which you combine different shapes, colors, and forms of ordinary moments and turn them into creative arts using your photography skills. This type of photography demands a unique way of seeing things and projecting an innovative image, altered from reality."
+    }
+]

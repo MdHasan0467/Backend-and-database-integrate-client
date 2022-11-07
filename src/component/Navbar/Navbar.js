@@ -24,29 +24,29 @@ const Navbar = () => {
 						</label>
 						<ul
 							tabIndex={0}
-							className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
+							className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#1e2b47] text-slate-200 rounded-box w-52'
 						>
+							<div className='flex lg:hidden'>
+								<img className='w-[30px]' src='lens-logo.png' alt='' />
+								<a className='btn btn-ghost normal-case text-md'>
+									BD Photographer
+								</a>
+							</div>
 							<li>
 								<Link to='/home'>Home</Link>
 							</li>
 							<li tabIndex={0}>
 								<Link to='/services'>Services</Link>
-								<ul className='p-2'>
-									<li>
-										<a>Submenu 1</a>
-									</li>
-									<li>
-										<a>Submenu 2</a>
-									</li>
-								</ul>
 							</li>
 							<li>
-								<a>Item 3</a>
+								<Link to='/blog'>Blog</Link>
 							</li>
 						</ul>
 					</div>
-					<img className='w-[50px]' src='lens-logo.png' alt='' />
-					<a className='btn btn-ghost normal-case text-xl'>BD Photographer</a>
+					<div className='lg:flex hidden'>
+						<img className='w-[50px]' src='lens-logo.png' alt='' />
+						<a className='btn btn-ghost normal-case text-lg'>BD Photographer</a>
+					</div>
 				</div>
 				<div className='navbar-center hidden lg:flex'>
 					<ul className='menu menu-horizontal p-0'>
@@ -57,12 +57,14 @@ const Navbar = () => {
 							<Link to='/services'>Services</Link>
 						</li>
 						<li>
-							<a>Item 3</a>
+							<Link to='/blog'>Blog</Link>
 						</li>
 					</ul>
 				</div>
-				<div className='navbar-end'>
-					<a className='btn'>Get started</a>
+				<div className='navbar-end flex'>
+				<p className='lg:block hidden mr-3'>Please login to add a review</p>
+				<p className='block lg:hidden mr-3'>Please login</p>
+				<Link to='/login'>Login</Link>
 				</div>
 			</div>
 		);

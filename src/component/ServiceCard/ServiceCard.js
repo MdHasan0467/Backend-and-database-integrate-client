@@ -9,7 +9,17 @@ const ServiceCard = ({ service }) => {
 				<figure>
 					<img className='w-full h-[100px]' src={img} alt='Shoes' />
 				</figure>
-				
+				<div className='card-body'>
+					<h2 className='card-title text-[#ff3811]'>{title}</h2>
+					<p className='font-semibold text-xl '>{description}</p>
+					<div className='card-action justify-end mx-auto '>
+						<Link to={`/checkout/${_id}`}>
+							<button className='btn mt-2 border-[#ff3811] bg-[#ff3811] hover:border-[#861600] hover:bg-[#861600]  text-white'>
+								Details
+							</button>
+						</Link>
+					</div>
+				</div>
 			</div>
 		);
 };

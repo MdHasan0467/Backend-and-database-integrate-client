@@ -1,12 +1,17 @@
-// import React, { useContext, useState } from 'react';
-// import { AuthContext } from '../../context/AuthProvider';
-// import useTitle from '../../hooks/useTitle';
 
-import { useState } from 'react';
+
+import { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../context/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const AddServices = () => {
+    const {loading} = useContext(AuthContext);
 	const [addservices, setAddservices] = useState({});
-
+    useTitle('Home');
+    if (loading) {
+			return <progress className='progress progress-error w-56'></progress>;
+		}
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(addservices);
@@ -16,14 +21,13 @@ const AddServices = () => {
 			headers: {
 				'content-type': 'application/json',
 			},
-			body: JSON.stringify(addservices), //! This is user come from useState
+			body: JSON.stringify(addservices), 
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				// console.log(data);
 				if (data.acknowledged) {
-					alert('Service added successfully!!');
-					e.target.reset();
+					toast.success('New Service Successfully Added!');
+					// e.target.reset();
 				}
 			});
 	};

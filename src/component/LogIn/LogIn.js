@@ -1,15 +1,15 @@
-import {  getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./LogIn.css";
 import {BsFacebook, BsGithub, BsGoogle } from 'react-icons/bs';
 import { AuthContext } from "../../context/AuthProvider";
 import useTitle from "../../hooks/useTitle";
+import toast from "react-hot-toast";
 
 
 const LogIn = () => {
 	useTitle('Login');
-	// const [userEmail, setUserEmail] = useState('');
 	const { user, loading, logIn, googleSignUp } = useContext(AuthContext);
 	const [success, setSuccess] = useState(false);
 	const [passwordError, setPasswordError] = useState('');
@@ -32,6 +32,7 @@ const LogIn = () => {
 				console.log(user);
 				// navigate(`${from}`);
 				navigate(from, { replace: true });
+				toast.success( 'Successfully Login!');
 			})
 			.catch((error) => console.error(error));
 	};
@@ -59,6 +60,7 @@ const LogIn = () => {
 				form.reset();
 				// navigate(from, { replace: true });
 				navigate(`${from}`);
+				toast.success('Successfully Login!');
 			})
 			.catch((error) => {
 				console.error(error);

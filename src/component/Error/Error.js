@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import Footer from '../Footer/Footer';
 
 const Error = () => {
+	useTitle('Error');
     return (
 			<div>
 				<section className='flex items-center h-vh p-16 bg-[#090a27]  text-slate-200'>

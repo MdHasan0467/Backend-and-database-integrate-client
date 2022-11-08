@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
+import { BsStarFill } from 'react-icons/bs';
+import { FaStarHalfAlt } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Details = () => {
-	const {user} = useContext(AuthContext)
+	const { user } = useContext(AuthContext);
 	const courseDetails = useLoaderData();
 	console.log(courseDetails);
-	const { _id, img, description, title, fee } = courseDetails;
-
-
+	const { img, description, title, fee } = courseDetails;
+	useTitle('Details');
 
 	return (
 		<div className=' p-6 overflow-hidden py-10 shadow bg-gray-900 text-gray-100 mx-auto'>
-			<Link src='.'></Link>
 			<div className=' p-6 overflow-hidden py-10 shadow bg-gray-900 text-gray-100 mx-auto'>
 				<article>
 					<img className='w-[50%] h-[400px] mx-auto my-4' src={img} alt='' />
@@ -22,10 +23,17 @@ const Details = () => {
 						<div className='flex justify-between w-full'>
 							<h3 className='text-lg text-secondary font-medium'>
 								<span className='font-semibold mr-1 font-serif text-white'>
-									Fee : 
+									Fee :
 								</span>
 								$ {fee}
 							</h3>
+						</div>
+						<div className='rating flex text-yellow-400'>
+							<BsStarFill className='ml-2'></BsStarFill>
+							<BsStarFill className='ml-2'></BsStarFill>
+							<BsStarFill className='ml-2'></BsStarFill>
+							<BsStarFill className='ml-2'></BsStarFill>
+							<FaStarHalfAlt className='ml-2'></FaStarHalfAlt>
 						</div>
 						<Link to='/services'>
 							<button className='flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md btn btn-secondary'>

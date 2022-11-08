@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import AddServices from '../component/AddServices/AddServices';
 import Blog from '../component/Blog/Blog';
 import Details from '../component/Details/Details';
 import Error from '../component/Error/Error';
@@ -40,6 +41,14 @@ const Routes = () => {
 					element: (
 						<PrivateRoute>
 							<MyReview></MyReview>
+						</PrivateRoute>
+					),
+				},
+				{
+					path: '/addservices',
+					element: (
+						<PrivateRoute>
+							<AddServices></AddServices>
 						</PrivateRoute>
 					),
 				},

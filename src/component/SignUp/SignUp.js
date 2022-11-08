@@ -4,9 +4,11 @@ import "./SignUp.css";
 import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from "firebase/auth";
 // import app from "../../firebase/firebase.init";
 import { AuthContext } from "../../context/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 // const auth = getAuth(app);
 const SignUp = () => {
+	useTitle('SignUp');
 	const [success, setSuccess] = useState(false);
 	const [passwordError, setPasswordError] = useState('');
 	const { createSignUp, userprofile } = useContext(AuthContext);

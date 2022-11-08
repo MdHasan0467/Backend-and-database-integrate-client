@@ -4,9 +4,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./LogIn.css";
 import {BsFacebook, BsGithub, BsGoogle } from 'react-icons/bs';
 import { AuthContext } from "../../context/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 
 const LogIn = () => {
+	useTitle('Login');
 	// const [userEmail, setUserEmail] = useState('');
 	const { logIn, googleSignUp } =
 		useContext(AuthContext);

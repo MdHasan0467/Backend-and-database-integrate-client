@@ -5,7 +5,7 @@ import Navbar from '../Navbar/Navbar';
 
 const Main = () => {
     return (
-			<div className='bg-[#090a27]'>
+			<div className='bg-[#090a27] lg:mx-10'>
 				<Navbar></Navbar>
 				<Outlet></Outlet>
 				<Footer></Footer>

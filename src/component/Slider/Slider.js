@@ -3,7 +3,7 @@ import React from 'react';
 const Slider = () => {
     return (
 			<div className='flex justify-center'>
-				<div className='carousel w-[50%] h-[400px] rounded-xl'>
+				<div className='carousel md:w-[50%] h-[400px] rounded-xl'>
 					<div id='slide1' className='carousel-item relative w-full'>
 						<img
 							alt=''

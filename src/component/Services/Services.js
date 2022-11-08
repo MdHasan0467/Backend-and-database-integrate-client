@@ -10,11 +10,11 @@ const Services = () => {
 					.then((data) => setServices(data));
     }, [])
     return (
-			<div className='grid gap-6 grid-cols-1 md:grid-cols-2 p-4 lg:grid-cols-3 '>
-				{services.map((service) => (
-					<ServiceCard key={service._id} service={service}></ServiceCard>
-				))}
-			</div>
+				<div className='grid gap-6 grid-cols-1 md:grid-cols-2 my-5 md:p-4 lg:grid-cols-3 '>
+					{services.map((service) => (
+						<ServiceCard key={service._id} service={service}></ServiceCard>
+                    ))}
+				</div>
 		);
 };
 

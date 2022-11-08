@@ -74,64 +74,7 @@ const SignUp = () => {
 				alt=''
 			/>
 
-			<div className='form lg:col-span-2 lg:w-[50%]  mt-[5%] border lg:mt-[1%] py-5 rounded-lg '>
-				<div>
-					<div className='grid grid-cols-1 lg:grid-cols-3'>
-						<img
-							className='lg:w-[50%] lg:h-[100%] w-[100px] h-[100px] rounded-lg mx-auto'
-							src='https://cdn5.vectorstock.com/i/thumb-large/90/99/black-thin-line-sign-up-with-hand-vector-28279099.jpg'
-							alt=''
-						/>
-						<h1 className='mt-7 lg:flex lg:justify-start lg:ml-12 col-span-2'>
-							Sign up Now
-						</h1>
-					</div>
-					<div className='flex justify-center '>
-						<form onSubmit={submitBtn} className='mt-6 '>
-							<div className='name'>
-								<input
-									className='block   py-1 px-7 mb-2 rounded-md'
-									type='text'
-									name='name'
-									placeholder='Enter Your Name'
-									required
-								/>
-							</div>
-							<input
-								className='block   py-1 px-7 mb-2 rounded-md'
-								type='text'
-								name='email'
-								placeholder=' email '
-								required
-							/>
-							<input
-								className='block   py-1 px-7 mb-2 rounded-md'
-								type='text'
-								name='profile'
-								placeholder='Profile URL '
-								required
-							/>
-							<input
-								className='block  py-1 px-7 rounded-md'
-								type='password'
-								name='password'
-								placeholder=' password'
-								required
-							/>
-							<p className='text-red-700'>
-								<small>{passwordError}</small>
-							</p>
-							{success && (
-								<p className='text-green-600'>
-									<small>Registration Successful</small>
-								</p>
-							)}
-							<button className='mt-5 text-gray-500 py-1 hover:text-black rounded-md px-3'>
-								Sign Up
-							</button>
-						</form>
-					</div>
-
+			
 					<p className='mt-5 lg:ml-3 px-2'>
 						<small>
 							Already have an account?

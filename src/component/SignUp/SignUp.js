@@ -9,9 +9,13 @@ import useTitle from "../../hooks/useTitle";
 // const auth = getAuth(app);
 const SignUp = () => {
 	useTitle('SignUp');
+	const {  loading } = useContext(AuthContext);
 	const [success, setSuccess] = useState(false);
 	const [passwordError, setPasswordError] = useState('');
 	const { createSignUp, userprofile } = useContext(AuthContext);
+	if (loading) {
+		return <progress className='progress progress-error w-56'></progress>;
+	}
 
 	const submitBtn = (e) => {
 		e.preventDefault();

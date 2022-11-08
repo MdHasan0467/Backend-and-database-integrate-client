@@ -10,8 +10,7 @@ import useTitle from "../../hooks/useTitle";
 const LogIn = () => {
 	useTitle('Login');
 	// const [userEmail, setUserEmail] = useState('');
-	const { logIn, googleSignUp } =
-		useContext(AuthContext);
+	const { user, loading, logIn, googleSignUp } = useContext(AuthContext);
 	const [success, setSuccess] = useState(false);
 	const [passwordError, setPasswordError] = useState('');
 
@@ -20,6 +19,10 @@ const LogIn = () => {
 	const from = location.state?.from?.pathname || '/';
 	//!......................................
 	//!......................................
+
+	if (loading) {
+		return <progress className='progress progress-error w-56'></progress>;
+	}
 
 	//! Google Log In....
 	const googleSignIn = () => {

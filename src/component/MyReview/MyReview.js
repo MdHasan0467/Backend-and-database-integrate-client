@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 const MyReview = () => {
+	const { loading } = useContext(AuthContext);
 	useTitle('MyReview');
+	if (loading) {
+		return <progress className='progress progress-error w-56'></progress>;
+	}
     return (
 			<div>
 				<h1 className='text-white'>MyReview</h1>

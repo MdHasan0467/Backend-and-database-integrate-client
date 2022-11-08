@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 import Gallery from '../Gallery/Gallery';
 import ServiceCard from '../ServiceCard/ServiceCard';
@@ -7,6 +8,7 @@ import Slider from '../Slider/Slider';
 import Static from '../Static/Static';
 
 const Home = () => {
+	const { loading } = useContext(AuthContext);
 	const [services, setServices] = useState([]);
 	useTitle('Home');
 
@@ -16,6 +18,10 @@ const Home = () => {
 			.then((data) => setServices(data));
 	}, []);
 	console.log(services);
+
+	if (loading) {
+		return <progress className='progress progress-error w-56'></progress>;
+	}
 
 	return (
 		<div>

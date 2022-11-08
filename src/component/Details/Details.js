@@ -6,11 +6,15 @@ import { AuthContext } from '../../context/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 const Details = () => {
-	const { user } = useContext(AuthContext);
+	const { user, loading } = useContext(AuthContext);
+	useTitle('Details');
 	const courseDetails = useLoaderData();
+	if (loading) {
+		return <progress className='progress progress-error w-56'></progress>;
+	}
 	console.log(courseDetails);
 	const { img, description, title, fee } = courseDetails;
-	useTitle('Details');
+	
 
 	return (
 		<div className=' p-6 overflow-hidden py-10 shadow bg-gray-900 text-gray-100 mx-auto'>

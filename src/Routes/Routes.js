@@ -11,6 +11,8 @@ import MyReview from '../component/MyReview/MyReview';
 import PrivateRoute from '../component/PrivateRoute/PrivateRoute';
 import Services from '../component/Services/Services';
 import SignUp from '../component/SignUp/SignUp';
+import MyReviews from '../ReviewSection/MyReviews/MyReviews';
+import ServiceDetails from '../ServiceDetails/ServiceDetails';
 
 const Routes = () => {
 	const router = createBrowserRouter([
@@ -28,19 +30,28 @@ const Routes = () => {
 				},
 				{
 					path: '/service/:id',
-					element: <Details></Details>,
+					element: <ServiceDetails></ServiceDetails>,
 					loader: ({ params }) =>
 						fetch(`http://localhost:5000/service/${params.id}`),
 				},
+
 				{
 					path: '/services',
 					element: <Services></Services>,
 				},
+				// {
+				// 	path: '/myreviews',
+				// 	element: (
+				// 		<PrivateRoute>
+				// 			<MyReview></MyReview>
+				// 		</PrivateRoute>
+				// 	),
+				// },
 				{
 					path: '/myreviews',
 					element: (
 						<PrivateRoute>
-							<MyReview></MyReview>
+							<MyReviews></MyReviews>
 						</PrivateRoute>
 					),
 				},

@@ -1,24 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
 import { BsStarFill } from 'react-icons/bs';
 import { FaStarHalfAlt } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthProvider';
-import useTitle from '../../hooks/useTitle';
-// import Review from '../MyReview/Review';
-import ReviewByID from './ReviewByID/ReviewByID';
+import useTitle from '../hooks/useTitle';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
-const Details = () => {
-	const [reviews, setReviews] = useState([]);
-	const { user, loading } = useContext(AuthContext);
-	useTitle('Details');
+const ServiceDetails = () => {
+	//! Dynamic Title By custom hook..
+	useTitle('Service Details');
+	//! Loaded Services Data...
 	const serviceDetails = useLoaderData();
-	
-	console.log(serviceDetails);
 	const { _id, img, description, title, fee } = serviceDetails;
 
+	//! Bring user info and loading From Context API...
+	const { user, loading } = useContext(AuthContext);
+
+	//! handleReview btn.....
 	const handleReview = (e) => {
-			
 		e.preventDefault();
 		const textarea = e.target.review.value;
 		console.log(textarea);
@@ -28,7 +29,7 @@ const Details = () => {
 			message: textarea,
 			image: user.photoURL,
 			name: user.displayName,
-			email: user.email
+			email: user.email,
 		};
 
 		fetch('http://localhost:5000/reviews', {
@@ -49,24 +50,20 @@ const Details = () => {
 			.catch((err) => console.error(err));
 	};
 
-
-	useEffect(() => {
-		fetch(`http://localhost:5000/reviews/${_id}`)
-			.then((res) => res.json())
-			.then((data) => setReviews(data));
-	}, [_id]);
-	console.log(reviews);
-
-
-	if (loading) {
-		return <progress className='progress progress-error w-56'></progress>;
-	}
-
 	return (
 		<div className=' p-6 overflow-hidden py-10 shadow bg-gray-900 text-gray-100 mx-auto'>
 			<div className=' p-6 overflow-hidden py-10 shadow bg-gray-900 text-gray-100 mx-auto'>
 				<article>
-					<img className='w-[50%] h-[400px] mx-auto my-4' src={img} alt='' />
+						<PhotoProvider>
+							<PhotoView  src={img}>
+								<img
+									className='w-[50%] h-[400px] mx-auto my-4'
+									src={img}
+									alt=''
+								/>
+							</PhotoView>
+						</PhotoProvider>
+
 					<h2 className='text-2xl font-serif font-bold'>{title}</h2>
 					<p className='mt-4 dark:text-gray-400 text-justify'>{description}</p>
 					<div className='lg:flex items-center mt-8 space-x-4'>
@@ -131,12 +128,10 @@ const Details = () => {
 						</Link>
 					</div>
 				)}
-				<div>
-					
-				</div>
+				<div className='review-section'></div>
 			</div>
 		</div>
 	);
 };
 
-export default Details;
+export default ServiceDetails;

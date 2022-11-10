@@ -1,3 +1,57 @@
+## ================> Start <=============
+
+# This project called BD Photography
+
+## build with: React, Tailwind, MongoDB, Express JS, and Node JS
+
+Live site link: <https://assignment-eleven-30dd0.web.app/>
+
+client Repository: <https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MdHasan0467>
+
+server Repository: <https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-MdHasan0467>
+
+### Steps are ------------------------------------------------
+
+* Install React Using: `npx create-react-app`
+
+* Install React router dom
+
+* Install React Router
+
+* Install Tailwind CSS
+
+* Install Daisy UI
+
+* install react icons
+
+* Add Folder Structure and all the necessary component.
+
+* Install firebase
+
+* Add Login and signUp Component
+
+* Add Home Slider and others sections
+
+* Receive data from Server side and Create Service
+
+* Add Review Section
+
+* Add My review and Add Service and make them Private.
+
+* Add review delete functionality
+
+* Add update functionality
+
+* Received JWT From server to verify user.
+
+* Deploy Project to firebase
+
+* Overall Done !!!
+
+## ================> The End <=============
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

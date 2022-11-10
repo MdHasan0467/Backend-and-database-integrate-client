@@ -2,27 +2,76 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import MyReviewsLoader from '../MyReviews/MyReviewsLoader';
 import useTitle from '../../hooks/useTitle';
+import toast from 'react-hot-toast';
+
+
+
+
+
+
+
+
 const MyReviews = () => {
+
+
+
+
+
 	//! Dynamically Title added by custom hook...
 	useTitle('My Reviews');
+
 	//! Bring user info From Context API...
-	const { user } = useContext(AuthContext);
-	//! useState for storing data which get by email...
+	const { user, logOut } = useContext(AuthContext);
+
+	//! useState for storing data which get by email && _id for delete data...
 	const [reviews, setReviews] = useState([]);
 
-	//! get data from mongodb by user email...
+	//! get data from mongodb by user email...&& get JWT token from the local storage by using header...
 	useEffect(() => {
-		fetch(`http://localhost:5000/reviews?email=${user.email}`)
-			.then((res) => res.json())
+		fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+			headers: {
+				authorization: `Bearer ${localStorage.getItem('Login-token')}`,
+			},
+		})
+			.then((res) => {
+				if (res.status === 401 || res.status === 403) {
+					return logOut();
+				}
+				return res.json();
+			})
 			.then((data) => setReviews(data));
-	}, [user?.email]);
+	}, [user?.email, logOut]);
+
+	//! Handle Delete
+	const handleDelete = (id) => {
+		const proceed = window.confirm(
+			'Are you sure , you want to delete this review?'
+		);
+
+		if (proceed) {
+			fetch(`http://localhost:5000/reviews/${id}`, {
+				method: 'DELETE',
+				
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					console.log(data);
+					if (data.deletedCount > 0) {
+						toast.error('Delete Successfully ');
+						const remaining = reviews.filter((rvw) => rvw._id !== id);
+						setReviews(remaining);
+					}
+				});
+		}
+	};
+
 	return (
 		<div>
-			<h1>MyReviews : {reviews.length}</h1>
 			<div>
-				<h1 className='text-3xl font-medium title-font text-white mb-12 text-center'>
-					All Reviews For {user.displayName}
+				<h1 className='lg:text-3xl font-medium title-font text-cyan-500 mb-12 text-center'>
+					<span className='text-white'>All Reviews For</span> {user.email}
 				</h1>
+				<h1 className='text-secondary'>Total review : {reviews.length}</h1>
 				{reviews.length === 0 ? (
 					<p className='text-slate-300 text-2xl font-serif '>
 						There are no review
@@ -30,7 +79,11 @@ const MyReviews = () => {
 				) : (
 					<div className='grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-3 '>
 						{reviews.map((review) => (
-							<MyReviewsLoader key={review._id} review={review}></MyReviewsLoader>
+							<MyReviewsLoader
+								key={review._id}
+								review={review}
+								handleDelete={handleDelete}
+							></MyReviewsLoader>
 						))}
 					</div>
 				)}

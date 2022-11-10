@@ -8,7 +8,7 @@ const ReviewLoader = ({ review, image }) => {
 	console.log(review);
 
 	useEffect(() => {
-		fetch('http://localhost:5000/reviews')
+		fetch('https://server-side-roan.vercel.app/reviews')
 			.then((res) => res.json())
 			.then((data) => setDatas(data));
 	}, []);
@@ -20,7 +20,7 @@ const ReviewLoader = ({ review, image }) => {
 		);
 
 		// if (proceed) {
-		// 	fetch(`http://localhost:5000/reviews/${id}`, {
+		// 	fetch(`https://server-side-roan.vercel.app/reviews/${id}`, {
 		// 		method: 'DELETE',
 		// 	})
 		// 		.then((res) => res.json())

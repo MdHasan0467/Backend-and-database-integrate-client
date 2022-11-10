@@ -6,7 +6,7 @@ const Footer = () => {
 			<footer className='footer p-10 bg-[#1e2b47] text-slate-200'>
 				<div>
 					<div className='flex'>
-						<img className='w-[50px] mr-5' src='lens-logo.png' alt='' />
+						<img className='w-[50px] rounded-full mr-5' src='logo.jpg' alt='' />
 						<Link
 							to='/home'
 							className='footer-title flex items-center text-secondary text-xl'

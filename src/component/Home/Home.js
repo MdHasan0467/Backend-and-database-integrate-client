@@ -13,9 +13,9 @@ const Home = () => {
 	useTitle('Home');
 
 	useEffect(() => {
-		fetch('http://localhost:5000/service')
+		fetch('https://server-side-roan.vercel.app/service')
 			.then((res) => res.json())
-			.then((data) => setServices(data));
+			.then((data) => setServices(data.reverse()));
 	}, []);
 	console.log(services);
 

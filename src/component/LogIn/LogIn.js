@@ -1,12 +1,10 @@
-
-import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import "./LogIn.css";
-import {BsFacebook, BsGithub, BsGoogle } from 'react-icons/bs';
-import { AuthContext } from "../../context/AuthProvider";
-import useTitle from "../../hooks/useTitle";
-import toast from "react-hot-toast";
-
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import './LogIn.css';
+import { BsFacebook, BsGithub, BsGoogle } from 'react-icons/bs';
+import { AuthContext } from '../../context/AuthProvider';
+import useTitle from '../../hooks/useTitle';
+import toast from 'react-hot-toast';
 
 const LogIn = () => {
 	useTitle('Login');
@@ -30,15 +28,12 @@ const LogIn = () => {
 			.then((result) => {
 				const user = result.user;
 				console.log(user);
-				// navigate(`${from}`);
 				navigate(from, { replace: true });
-				toast.success( 'Successfully Login!');
+				toast.success('Successfully Login!');
 			})
 			.catch((error) => console.error(error));
 	};
 	//!......................................
-
-
 
 	//! Form Log In...
 	const submitBtn = (e) => {
@@ -58,9 +53,26 @@ const LogIn = () => {
 				console.log(user);
 				setSuccess(true);
 				form.reset();
-				// navigate(from, { replace: true });
-				navigate(`${from}`);
-				toast.success('Successfully Login!');
+
+				const currentUser = {
+					email: user.email,
+				};
+
+				//! request on the server to get a JWT token...
+				fetch('https://server-side-roan.vercel.app/jwt', {
+					method: 'POST',
+					headers: {
+						'content-type': 'application/json',
+					},
+					body: JSON.stringify(currentUser),
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						console.log(data);
+						//! Set the JWT token on local storage...
+						localStorage.setItem('Login-token', data.token);
+						navigate(from, { replace: true });
+					});
 			})
 			.catch((error) => {
 				console.error(error);

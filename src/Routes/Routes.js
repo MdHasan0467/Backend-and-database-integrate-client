@@ -7,12 +7,14 @@ import Error from '../component/Error/Error';
 import Home from '../component/Home/Home';
 import LogIn from '../component/LogIn/LogIn';
 import Main from '../component/Main/Main';
-import MyReview from '../component/MyReview/MyReview';
+import MyReview from '../DestroyFolders/MyReview/MyReview';
 import PrivateRoute from '../component/PrivateRoute/PrivateRoute';
 import Services from '../component/Services/Services';
 import SignUp from '../component/SignUp/SignUp';
+import UpdateReview from '../component/UpdateReview/UpdateReview';
 import MyReviews from '../ReviewSection/MyReviews/MyReviews';
 import ServiceDetails from '../ServiceDetails/ServiceDetails';
+import About from '../component/About/About';
 
 const Routes = () => {
 	const router = createBrowserRouter([
@@ -29,24 +31,27 @@ const Routes = () => {
 					element: <Home></Home>,
 				},
 				{
+					path: '/about',
+					element: <About></About>,
+				},
+				{
 					path: '/service/:id',
 					element: <ServiceDetails></ServiceDetails>,
 					loader: ({ params }) =>
-						fetch(`http://localhost:5000/service/${params.id}`),
+						fetch(`https://server-side-roan.vercel.app/service/${params.id}`),
+				},
+				{
+					path: '/service/:id',
+					element: <UpdateReview></UpdateReview>,
+					loader: ({ params }) =>
+						fetch(`https://server-side-roan.vercel.app/service/${params.id}`),
 				},
 
 				{
 					path: '/services',
 					element: <Services></Services>,
 				},
-				// {
-				// 	path: '/myreviews',
-				// 	element: (
-				// 		<PrivateRoute>
-				// 			<MyReview></MyReview>
-				// 		</PrivateRoute>
-				// 	),
-				// },
+
 				{
 					path: '/myreviews',
 					element: (

@@ -1,22 +1,22 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
-import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from "firebase/auth";
-// import app from "../../firebase/firebase.init";
 import { AuthContext } from "../../context/AuthProvider";
 import useTitle from "../../hooks/useTitle";
 
-// const auth = getAuth(app);
+
 const SignUp = () => {
 	useTitle('SignUp');
 	const {  loading } = useContext(AuthContext);
 	const [success, setSuccess] = useState(false);
 	const [passwordError, setPasswordError] = useState('');
 	const { createSignUp, userprofile } = useContext(AuthContext);
+	//! Progress Loading...
 	if (loading) {
 		return <progress className='progress progress-error w-56'></progress>;
 	}
 
+	//! submit btn...
 	const submitBtn = (e) => {
 		e.preventDefault();
 		setSuccess(false);

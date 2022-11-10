@@ -1,15 +1,20 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 // import { BsDownload } from 'react-icons/bs';
 import { AuthContext } from '../../context/AuthProvider';
 // import { BsGoogle } from 'react-icons/bs';
 
 const Navbar = () => {
 	const { user, logOut } = useContext(AuthContext);
+	const nav = useNavigate();
 
-		const handleLogOut = () => {
+	const handleLogOut = () => {
+			nav('/login');
 			logOut()
-				.then(() => {})
+				.then(() => {
+					toast.error('Log Out!');
+				})
 				.catch((error) => console.error(error));
 		};
     return (
@@ -38,28 +43,28 @@ const Navbar = () => {
 								className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#1e2b47] text-slate-200 rounded-box w-52'
 							>
 								<div className='flex lg:hidden'>
-									<img className='w-[30px]' src='lens-logo.png' alt='' />
-									<Link
+									<img className='w-[30px]' src='logo.jpg' alt='' />
+									<NavLink
 										to='/home'
 										className='btn btn-ghost normal-case text-md'
 									>
 										BD Photographer
-									</Link>
+									</NavLink>
 								</div>
 								<li>
-									<Link to='/home' className='hover:text-secondary'>
+									<NavLink to='/home' className='hover:text-secondary'>
 										Home
-									</Link>
+									</NavLink>
 								</li>
 								<li>
-									<Link to='/blog' className='hover:text-secondary'>
+									<NavLink to='/blog' className='hover:text-secondary'>
 										Blog
-									</Link>
+									</NavLink>
 								</li>
 								<li>
-									<Link to='/myreviews' className='hover:text-secondary'>
+									<NavLink to='/myreviews' className='hover:text-secondary'>
 										My Reviews
-									</Link>
+									</NavLink>
 								</li>
 							</ul>
 						) : (
@@ -68,72 +73,72 @@ const Navbar = () => {
 								className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#1e2b47] text-slate-200 rounded-box w-52'
 							>
 								<div className='flex lg:hidden'>
-									<img className='w-[30px]' src='lens-logo.png' alt='' />
-									<Link
+									<img className='w-[30px]' src='logo.jpg' alt='' />
+									<NavLink
 										to='/home'
 										className='btn btn-ghost normal-case text-md'
 									>
 										BD Photographer
-									</Link>
+									</NavLink>
 								</div>
 								<li>
-									<Link to='/home' className='hover:text-secondary'>
+									<NavLink to='/home' className='hover:text-secondary'>
 										Home
-									</Link>
+									</NavLink>
 								</li>
 								<li>
-									<Link to='/blog' className='hover:text-secondary'>
+									<NavLink to='/blog' className='hover:text-secondary'>
 										Blog
-									</Link>
+									</NavLink>
 								</li>
 							</ul>
 						)}
 					</div>
 					<div className='lg:flex hidden'>
-						<img className='w-[50px]' src='lens-logo.png' alt='' />
-						<Link
+						<img className='w-[50px] rounded-full' src='logo.jpg' alt='' />
+						<NavLink
 							to='/home'
 							className='btn btn-ghost normal-case text-lg hover:text-secondary'
 						>
 							BD Photographer
-						</Link>
+						</NavLink>
 					</div>
 				</div>
 				<div className='navbar-center hidden lg:flex'>
 					{user ? (
 						<ul className='menu menu-horizontal p-0'>
 							<li>
-								<Link to='/home' className='hover:text-secondary'>
+								<NavLink to='/home' className='hover:text-secondary'>
 									Home
-								</Link>
+								</NavLink>
 							</li>
 							<li>
-								<Link to='/blog' className='hover:text-secondary'>
+								<NavLink to='/blog' className='hover:text-secondary'>
 									Blog
-								</Link>
+								</NavLink>
 							</li>
 							<li>
-								<Link to='/myreviews' className='hover:text-secondary'>
+								<NavLink to='/myreviews' className='hover:text-secondary '>
 									My Reviews
-								</Link>
+								</NavLink>
 							</li>
 							<li>
-								<Link to='/addservices' className='hover:text-secondary'>
+								<NavLink to='/addservices' className='hover:text-secondary'>
 									Add Services
-								</Link>
+								</NavLink>
 							</li>
 						</ul>
 					) : (
 						<ul className='menu menu-horizontal p-0'>
 							<li>
-								<Link to='/home' className='hover:text-secondary'>
+								<NavLink to='/home' className='hover:text-secondary'>
 									Home
-								</Link>
+								</NavLink>
 							</li>
 							<li>
-								<Link to='/blog' className='hover:text-secondary'>
+								<NavLink to='/blog' className='hover:text-secondary'>
 									Blog
-								</Link>
+								</NavLink>
 							</li>
 						</ul>
 					)}
@@ -158,6 +163,12 @@ const Navbar = () => {
 									</a>
 								</li>
 								<li>
+									<Link to='/about' className=' hover:text-secondary'>About</Link>
+								</li>
+								<li>
+									<a className=' hover:text-secondary'>FAQ</a>
+								</li>
+								<li>
 									<a className=' hover:text-secondary'>Settings</a>
 								</li>
 								<li>
@@ -168,9 +179,9 @@ const Navbar = () => {
 							</ul>
 						</div>
 					) : (
-						<Link to='/login'>
+						<NavLink to='/login'>
 							<button className='btn btn-secondary'>Login</button>
-						</Link>
+						</NavLink>
 					)}
 				</div>
 			</div>

@@ -5,20 +5,19 @@ import { FaStarHalfAlt } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import useTitle from '../../hooks/useTitle';
+import ReviewByAllUser from '../ReviewByAllUser/ReviewByAllUser';
 // import Review from '../MyReview/Review';
-import ReviewByID from './ReviewByID/ReviewByID';
 
 const Details = () => {
 	const [reviews, setReviews] = useState([]);
 	const { user, loading } = useContext(AuthContext);
 	useTitle('Details');
 	const serviceDetails = useLoaderData();
-	
+
 	console.log(serviceDetails);
 	const { _id, img, description, title, fee } = serviceDetails;
 
 	const handleReview = (e) => {
-			
 		e.preventDefault();
 		const textarea = e.target.review.value;
 		console.log(textarea);
@@ -28,10 +27,10 @@ const Details = () => {
 			message: textarea,
 			image: user.photoURL,
 			name: user.displayName,
-			email: user.email
+			email: user.email,
 		};
 
-		fetch('http://localhost:5000/reviews', {
+		fetch('https://server-side-roan.vercel.app/reviews', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
@@ -49,14 +48,12 @@ const Details = () => {
 			.catch((err) => console.error(err));
 	};
 
-
 	useEffect(() => {
-		fetch(`http://localhost:5000/reviews/${_id}`)
+		fetch(`https://server-side-roan.vercel.app/reviews/${_id}`)
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
 	}, [_id]);
 	console.log(reviews);
-
 
 	if (loading) {
 		return <progress className='progress progress-error w-56'></progress>;
@@ -131,8 +128,8 @@ const Details = () => {
 						</Link>
 					</div>
 				)}
-				<div>
-					
+				<div className='mb-96'>
+					<ReviewByAllUser></ReviewByAllUser>
 				</div>
 			</div>
 		</div>

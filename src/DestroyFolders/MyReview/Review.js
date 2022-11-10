@@ -6,7 +6,7 @@ const Review = ({ image }) => {
 	const { user } = useContext(AuthContext);
 	const [reviews, setReviews] = useState([]);
 	useEffect(() => {
-		fetch(`http://localhost:5000/reviews?email=${user.email}`)
+		fetch(`https://server-side-roan.vercel.app/reviews?email=${user.email}`)
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
 	}, [user?.email]);
@@ -22,11 +22,7 @@ const Review = ({ image }) => {
 			) : (
 				<div className='grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-3 '>
 					{reviews.map((review) => (
-						<ReviewLoader
-							key={review._id}
-							
-							review={review}
-						></ReviewLoader>
+						<ReviewLoader key={review._id} review={review}></ReviewLoader>
 					))}
 				</div>
 			)}

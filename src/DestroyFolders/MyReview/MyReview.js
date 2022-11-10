@@ -10,7 +10,7 @@ const MyReview = () => {
 	useTitle('MyReview');
 
 	useEffect(() => {
-		fetch('http://localhost:5000/reviews')
+		fetch('https://server-side-roan.vercel.app/reviews')
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
 	}, []);

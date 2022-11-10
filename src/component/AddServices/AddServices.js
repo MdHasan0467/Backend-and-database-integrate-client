@@ -1,27 +1,25 @@
-
-
 import { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 const AddServices = () => {
-    const {loading} = useContext(AuthContext);
+	const { loading } = useContext(AuthContext);
 	const [addservices, setAddservices] = useState({});
-    useTitle('Home');
-    if (loading) {
-			return <progress className='progress progress-error w-56'></progress>;
-		}
+	useTitle('Home');
+	if (loading) {
+		return <progress className='progress progress-error w-56'></progress>;
+	}
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(addservices);
 
-		fetch('http://localhost:5000/services', {
+		fetch('https://server-side-roan.vercel.app/services', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
 			},
-			body: JSON.stringify(addservices), 
+			body: JSON.stringify(addservices),
 		})
 			.then((res) => res.json())
 			.then((data) => {
@@ -40,46 +38,57 @@ const AddServices = () => {
 	};
 	return (
 		<div className='mt-10'>
-			<form onSubmit={handleSubmit}>
-				<div className='group'>
-					<p className='text-secondary text--2xl font-serif'>Photo URL :</p>
-			<input className= "w-[300px] h-[30px]  p-2"
-						onBlur={handleBlue}
-						type='text'
-						name='img'
-						placeholder='URL'
-						id=''
-					/>
-				</div>
-				<div className='group'>
-					<p className='text-secondary text--2xl font-serif'>Title :</p>
-			<input className= "w-[300px] h-[30px]  p-2"
-						onBlur={handleBlue}
-						type='text'
-						name='title'
-						placeholder='Title'
-						id=''
-					/>
-				</div>
-				<div className='group'>
-					<p className='text-secondary text--2xl font-serif'>Fee :</p>
-			<input className= "w-[300px] h-[30px]  p-2"
-						onBlur={handleBlue}
-						type='number'
-						name='fee'
-						placeholder='Fee'
-						id=''
-					/>
-				</div>
-				<div className='group'>
-					<p className='text-secondary text--2xl font-serif'>Description :</p>
-			<input className= "w-[300px] h-[70px] p-2"
-						onBlur={handleBlue}
-						type='text'
-						name='description'
-						placeholder='Description'
-						id=''
-					/>
+			<h1 className='text-4xl text-secondary my-6 font-serif '>
+				Add a service
+			</h1>
+			<form className='' onSubmit={handleSubmit}>
+				<div className='lg:grid grid-cols-2 gap-10'>
+					<div className='group'>
+						<p className='text-secondary text--2xl font-serif'>Photo URL :</p>
+						<input
+							className='input input-bordered input-info w-full max-w-xs'
+							onBlur={handleBlue}
+							type='text'
+							name='img'
+							placeholder='URL'
+							id=''
+							required
+						/>
+
+						<p className='text-secondary text--2xl font-serif'>Title :</p>
+						<input
+							onBlur={handleBlue}
+							type='text'
+							name='title'
+							placeholder='Title'
+							className='input input-bordered input-info w-full max-w-xs'
+							required
+						/>
+					</div>
+					<div className='group'>
+						<p className='text-secondary text--2xl font-serif'>Fee :</p>
+						<input
+							onBlur={handleBlue}
+							type='number'
+							name='fee'
+							placeholder='Fee'
+							className='input input-bordered input-info w-full max-w-xs'
+							required
+						/>
+
+						<p className='text-secondary text--2xl  font-serif'>
+							Description :
+						</p>
+						<input
+							className='textarea textarea-info w-full max-w-xs'
+							onBlur={handleBlue}
+							type='text'
+							name='description'
+							placeholder='Description'
+							id=''
+							required
+						/>
+					</div>
 				</div>
 				<button className='btn btn-secondary my-5'>Add Services</button>
 			</form>

@@ -74,7 +74,7 @@ const SignUp = () => {
 	};
 
 	return (
-		<div className='grid lg:grid-cols-3 mx-5 lg:mx-0 mt-10 bg-white p-10 '>
+		<div className='grid lg:grid-cols-3 mx-5 lg:mx-0 mt-10 bg-white p-10 min-h-screen '>
 			<img
 				src='https://t3.ftcdn.net/jpg/03/39/70/90/360_F_339709048_ZITR4wrVsOXCKdjHncdtabSNWpIhiaR7.jpg'
 				alt=''

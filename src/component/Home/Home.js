@@ -24,7 +24,7 @@ const Home = () => {
 	}
 
 	return (
-		<div>
+		<div className='min-h-screen'>
 			<div className='mt-10'>
 				<Slider></Slider>
 			</div>

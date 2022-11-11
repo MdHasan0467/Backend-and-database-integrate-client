@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import {  useLoaderData } from 'react-router-dom';
 
 const UpdateReview = () => {
@@ -22,7 +23,7 @@ const UpdateReview = () => {
 				.then((res) => res.json())
 				.then((data) => {
 					if (data.modifiedCount) {
-						alert(data);
+						toast.success('Review Updated Successfully !');
 					}
 				});
 		};
@@ -36,7 +37,7 @@ const UpdateReview = () => {
 	};
 	
 	return (
-		<div>
+		<div className='min-h-screen'>
 			<h1 className='text-white lg:mr-20 my-5'>Update for :  {storedReview.serviceTitle}</h1>
 			<form onSubmit={handleUpdate}>
 				<textarea

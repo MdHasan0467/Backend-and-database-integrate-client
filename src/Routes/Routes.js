@@ -32,7 +32,7 @@ const Routes = () => {
 					path: '/update/:id',
 					element: <UpdateReview></UpdateReview>,
 					loader: ({ params }) =>
-						fetch(`http://localhost:5000/update/${params.id}`),
+						fetch(`https://server-side-roan.vercel.app/update/${params.id}`),
 				},
 				{
 					path: '/about',

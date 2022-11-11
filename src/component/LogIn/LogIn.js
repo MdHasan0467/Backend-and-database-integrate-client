@@ -53,26 +53,27 @@ const LogIn = () => {
 				console.log(user);
 				setSuccess(true);
 				form.reset();
+				navigate(from, { replace: true });
 
-				const currentUser = {
-					email: user.email,
-				};
+				// const currentUser = {
+				// 	email: user.email,
+				// };
 
-				//! request on the server to get a JWT token...
-				fetch('https://server-side-roan.vercel.app/jwt', {
-					method: 'POST',
-					headers: {
-						'content-type': 'application/json',
-					},
-					body: JSON.stringify(currentUser),
-				})
-					.then((res) => res.json())
-					.then((data) => {
-						console.log(data);
-						//! Set the JWT token on local storage...
-						localStorage.setItem('Login-token', data.token);
-						navigate(from, { replace: true });
-					});
+				// //! request on the server to get a JWT token...
+				// fetch('https://server-side-roan.vercel.app/jwt', {
+				// 	method: 'POST',
+				// 	headers: {
+				// 		'content-type': 'application/json',
+				// 	},
+				// 	body: JSON.stringify(currentUser),
+				// })
+				// 	.then((res) => res.json())
+				// 	.then((data) => {
+				// 		console.log(data);
+				// 		//! Set the JWT token on local storage...
+				// 		localStorage.setItem('Login-token', data.token);
+				// 		navigate(from, { replace: true });
+				// 	});
 			})
 			.catch((error) => {
 				console.error(error);
@@ -82,7 +83,7 @@ const LogIn = () => {
 	//!......................................
 
 	return (
-		<div className='lg:grid  grid-cols-3 p-10 bg-white'>
+		<div className='lg:grid  grid-cols-3 p-10 bg-white min-h-screen'>
 			<img
 				className='hidden lg:grid w-[50%] mx-auto mt-20'
 				src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndRmGMIVPZ0KuQYgXsZW5G8Yukmyx36Sagg&usqp=CAU'

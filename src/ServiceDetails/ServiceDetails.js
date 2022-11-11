@@ -106,7 +106,7 @@ const ServiceDetails = () => {
 						</div>
 						<Link to='/services'>
 							<button className='flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md btn btn-secondary'>
-								Back
+								All Services
 							</button>
 						</Link>
 					</div>

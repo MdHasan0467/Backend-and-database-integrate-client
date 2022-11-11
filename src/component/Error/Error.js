@@ -6,11 +6,11 @@ import Footer from '../Footer/Footer';
 const Error = () => {
 	useTitle('Error');
     return (
-			<div>
+			<div className='min-h-screen'>
 				<section className='flex items-center h-vh p-16 bg-[#090a27]  text-slate-200'>
 					<div className='container flex flex-col items-center justify-center px-5 mx-auto my-8'>
 						<div className='max-w-md text-center'>
-                        <h2 className='mb-8 font-extrabold text-9xl text-slate-200'>
+							<h2 className='mb-8 font-extrabold text-9xl text-slate-200'>
 								<span className='sr-only'>Error</span>404
 							</h2>
 							<p className='text-2xl font-semibold md:text-3xl'>
@@ -31,8 +31,8 @@ const Error = () => {
 							</Link>
 						</div>
 					</div>
-            </section>
-            <Footer></Footer>
+				</section>
+				<Footer></Footer>
 			</div>
 		);
 };

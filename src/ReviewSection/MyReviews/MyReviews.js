@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import MyReviewsLoader from '../MyReviews/MyReviewsLoader';
 import useTitle from '../../hooks/useTitle';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 
 
@@ -59,11 +60,19 @@ const MyReviews = () => {
 			
 
 	return (
-		<div>
-			<div>
+		<div className='min-h-screen'>
+			<div className='flex justify-between mb-20 mt-5'>
+				<div>.</div>
 				<h1 className='lg:text-3xl font-medium title-font text-cyan-500 mb-12 text-center'>
 					<span className='text-white'>All Reviews For</span> {user.email}
 				</h1>
+				<Link to='/services'>
+					<button className='flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md btn btn-accent'>
+						All Services
+					</button>
+				</Link>
+			</div>
+			<div>
 				<h1 className='text-secondary'>Total review : {reviews.length}</h1>
 				{reviews.length === 0 ? (
 					<p className='text-slate-300 text-2xl font-serif '>
@@ -75,17 +84,12 @@ const MyReviews = () => {
 							<MyReviewsLoader
 								key={review._id}
 								review={review}
-								handleDelete={handleDelete}								
+								handleDelete={handleDelete}
 							></MyReviewsLoader>
 						))}
 					</div>
 				)}
 			</div>
-			
-
-
-
-
 		</div>
 	);
 };

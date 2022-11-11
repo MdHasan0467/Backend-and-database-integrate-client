@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
@@ -37,10 +38,18 @@ const AddServices = () => {
 		setAddservices(newServices);
 	};
 	return (
-		<div className='mt-10'>
+		<div className='mt-10 min-h-screen'>
 			<h1 className='text-4xl text-secondary my-6 font-serif '>
 				Add a service
 			</h1>
+			<div className='flex justify-between mb-20'>
+				<div>.</div>
+				<Link to='/services'>
+					<button className='flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md btn btn-accent'>
+						All Services
+					</button>
+				</Link>
+			</div>
 			<form className='' onSubmit={handleSubmit}>
 				<div className='lg:grid grid-cols-2 gap-10'>
 					<div className='group'>

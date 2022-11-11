@@ -7,7 +7,7 @@ const Slider = () => {
 					<div id='slide1' className='carousel-item relative w-full'>
 						<img
 							alt=''
-							src='https://images.unsplash.com/photo-1556103255-4443dbae8e5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cGhvdG9ncmFwaGVyfGVufDB8fDB8fA%3D%3D&w=1000&q=80'
+							src='https://i0.wp.com/pixelpluck.com/wp-content/uploads/2016/03/photography-slogans-one-liners.jpeg?fit=1080%2C647&ssl=1'
 							className='w-full'
 						/>
 						<div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>

@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 
 const LogIn = () => {
 	useTitle('Login');
-	const { user, loading, logIn, googleSignUp } = useContext(AuthContext);
+	const { user,  logIn, googleSignUp } = useContext(AuthContext);
 	const [success, setSuccess] = useState(false);
 	const [passwordError, setPasswordError] = useState('');
 
@@ -80,9 +80,7 @@ const LogIn = () => {
 	};
 
 
-	if (loading) {
-		return <progress className='progress progress-error w-56'></progress>;
-	}
+	
 	//!......................................
 
 	return (

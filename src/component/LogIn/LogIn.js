@@ -18,9 +18,7 @@ const LogIn = () => {
 	//!......................................
 	//!......................................
 
-	if (loading) {
-		return <progress className='progress progress-error w-56'></progress>;
-	}
+	
 
 	//! Google Log In....
 	const googleSignIn = () => {
@@ -80,43 +78,48 @@ const LogIn = () => {
 				setPasswordError(error.message);
 			});
 	};
+
+
+	if (loading) {
+		return <progress className='progress progress-error w-56'></progress>;
+	}
 	//!......................................
 
 	return (
-		<div className='lg:grid  grid-cols-3 p-10 bg-white min-h-screen'>
-			<img
-				className='hidden lg:grid w-[50%] mx-auto mt-20'
-				src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndRmGMIVPZ0KuQYgXsZW5G8Yukmyx36Sagg&usqp=CAU'
-				alt=''
-			/>
-
-			<div className='form lg:col-span-2 lg:w-[50%]  mt-[5%] py-5 rounded-lg border'>
-				<div>
-					<h1>Log In for open new window</h1>
-					<img
-						className='w-[50px] h-[50px] rounded-full ml-[40%] lg:mx-auto mt-5'
-						src='https://cdn5.vectorstock.com/i/thumb-large/90/99/black-thin-line-sign-up-with-hand-vector-28279099.jpg'
-						alt=''
-					/>
-					<form onSubmit={submitBtn}>
-						<div className='mt-6 mx-10  lg:mx-24'>
+		<div>
+			<div className='hero min-h-screen bg-base-200'>
+				<div className='card flex-shrink-0 w-full py-5 max-w-sm shadow-2xl bg-base-100'>
+					<form className='card-body' onSubmit={submitBtn}>
+						<div className='form-control'>
+							<label className='label'>
+								<span className='label-text'>Email</span>
+							</label>
 							<input
-								className='block  py-1 px-7 mb-2 rounded-md'
 								type='text'
 								name='email'
 								placeholder='Enter your email address'
-							/>
-							<input
-								className='block  py-1 px-7 rounded-md'
-								type='password'
-								name='password'
-								placeholder='Enter your valid password'
+								className='input input-bordered'
 							/>
 						</div>
-						<button className='mt-5 text-gray-500 hover:text-black py-1 rounded-md px-3'>
-							{' '}
-							Log In{' '}
-						</button>
+						<div className='form-control'>
+							<label className='label'>
+								<span className='label-text'>Password</span>
+							</label>
+							<input
+								type='password'
+								name='password'
+								placeholder='Enter your valid password '
+								className='input input-bordered'
+							/>
+							<label className='label'>
+								<a href='#' className='label-text-alt link link-hover'>
+									Forgot password?
+								</a>
+							</label>
+						</div>
+						<div className='form-control mt-6'>
+							<button className='btn btn-primary'>Login</button>
+						</div>
 					</form>
 					{success && (
 						<p className='text-green-600'>
@@ -143,15 +146,16 @@ const LogIn = () => {
 							</button>
 						</small>
 					</p>
-				</div>
-				<div className='icons flex lg:shadow-slate-600 shadow-md py-5 rounded-lg mx-12 lg:mx-24 mt-7'>
-					<BsGoogle
-						onClick={googleSignIn}
-						className='ml-10 cursor-pointer hover:text-red-500'
-					></BsGoogle>
-					<BsFacebook className='ml-10 cursor-pointer hover:text-blue-600'></BsFacebook>
 
-					<BsGithub className='ml-10 cursor-pointer hover:text-gray-800'></BsGithub>
+					<div className='icons flex lg:shadow-slate-600 shadow-md py-5 rounded-lg mx-12 lg:mx-24 mt-7'>
+						<BsGoogle
+							onClick={googleSignIn}
+							className='ml-10 cursor-pointer hover:text-red-500'
+						></BsGoogle>
+						<BsFacebook className='ml-10 cursor-pointer hover:text-blue-600'></BsFacebook>
+
+						<BsGithub className='ml-10 cursor-pointer hover:text-gray-800'></BsGithub>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -159,3 +163,5 @@ const LogIn = () => {
 };
 
 export default LogIn;
+
+

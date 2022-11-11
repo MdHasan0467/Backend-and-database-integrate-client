@@ -28,7 +28,11 @@ const MyReviews = () => {
 
 	//! get data from mongodb by user email...&& get JWT token from the local storage by using header...
 	useEffect(() => {
-		fetch(`https://server-side-roan.vercel.app/reviews?email=${user?.email}`)
+		fetch(`https://server-side-roan.vercel.app/reviews?email=${user?.email}`, {
+			headers: {
+				authorizaion:`Bearer ${localStorage.getItem('Login-token')}`
+			}
+		})
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
 	}, [user?.email]);

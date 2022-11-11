@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 
 const LogIn = () => {
 	useTitle('Login');
-	const { user,  logIn, googleSignUp } = useContext(AuthContext);
+	const { user, logIn, googleSignUp } = useContext(AuthContext);
 	const [success, setSuccess] = useState(false);
 	const [passwordError, setPasswordError] = useState('');
 
@@ -17,8 +17,6 @@ const LogIn = () => {
 	const from = location.state?.from?.pathname || '/';
 	//!......................................
 	//!......................................
-
-	
 
 	//! Google Log In....
 	const googleSignIn = () => {
@@ -51,27 +49,29 @@ const LogIn = () => {
 				console.log(user);
 				setSuccess(true);
 				form.reset();
-				navigate(from, { replace: true });
+				// navigate(from, { replace: true });
 
-				// const currentUser = {
-				// 	email: user.email,
-				// };
-
+				const currentUser = {
+					email: user.email,
+				};
+				console.log(currentUser
+				
+				);
 				// //! request on the server to get a JWT token...
-				// fetch('https://server-side-roan.vercel.app/jwt', {
-				// 	method: 'POST',
-				// 	headers: {
-				// 		'content-type': 'application/json',
-				// 	},
-				// 	body: JSON.stringify(currentUser),
-				// })
-				// 	.then((res) => res.json())
-				// 	.then((data) => {
-				// 		console.log(data);
-				// 		//! Set the JWT token on local storage...
-				// 		localStorage.setItem('Login-token', data.token);
-				// 		navigate(from, { replace: true });
-				// 	});
+				fetch('http://localhost:5000/jwt', {
+					method: 'POST',
+					headers: {
+						'content-type': 'application/json',
+					},
+					body: JSON.stringify(currentUser),
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						console.log(data);
+						//! Set the JWT token on local storage...
+						localStorage.setItem('Login-token', data.token);
+						navigate(from, { replace: true });
+					});
 			})
 			.catch((error) => {
 				console.error(error);
@@ -79,8 +79,6 @@ const LogIn = () => {
 			});
 	};
 
-
-	
 	//!......................................
 
 	return (
@@ -161,5 +159,3 @@ const LogIn = () => {
 };
 
 export default LogIn;
-
-

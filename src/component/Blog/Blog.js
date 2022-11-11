@@ -11,7 +11,7 @@ const Blog = () => {
 	}
 	
     return (
-			<div className='m-10'>
+			<div className='m-10 min-h-screen'>
 				<div
 					tabIndex={0}
 					className='collapse collapse-plus border border-base-300 my-2 '

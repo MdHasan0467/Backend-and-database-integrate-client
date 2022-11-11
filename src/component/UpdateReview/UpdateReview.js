@@ -1,80 +1,55 @@
 import React, { useState } from 'react';
-import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import {  useLoaderData } from 'react-router-dom';
 
 const UpdateReview = () => {
-	// const dataLoad = useLoaderData();
-	// console.log(dataLoad);
-	// const [dataStored, setDataStored] = useState();
+	const storedReview = useLoaderData();
 
-	// const handleReview = (e) => {
-	// 	e.preventDefault();
+	const [reviews, setReviews] = useState(storedReview);
+	
 
-	// 	fetch(`https://server-side-roan.vercel.app/reviews/${dataLoad._id}`, {
-	// 		method: 'PUT',
-	// 		headers: {
-	// 			'content-type': 'application/json',
-	// 		},
-	// 		body: JSON.stringify(dataStored),
-	// 	})
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			console.log(data);
-	// 			setDataStored(data);
-	// 		});
-	// };
+		const handleUpdate = (e) => {
+			e.preventDefault();
+			console.log(reviews);
+			
+			// fetch(`https://server-side-roan.vercel.app/update/${storedReview._id}`, {
+			fetch(`https://server-side-roan.vercel.app/update/${storedReview._id}`, {
+				method: 'PUT',
+				headers: {
+					'content-type': 'application/json',
+				},
+				body: JSON.stringify(reviews),
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.modifiedCount) {
+						alert(data);
+					}
+				});
+		};
 
-	// const handleReviewChange = (e) => {
-	// 		const textarea = e.target.review.value;
-	// 		console.log(textarea);
-	// 	};
-
-	const storedData = useLoaderData();
-	const [dataLoad, setDataLoad] = useState(storedData);
-
-	const handleUpdate = (e) => {
-		e.preventDefault();
-		// console.log(user);
-		fetch(`https://server-side-roan.vercel.app/reviews/${storedData._id}`, {
-			method: 'PUT',
-			headers: {
-				'content-type': 'application/json',
-			},
-			body: JSON.stringify(dataLoad),
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				if (data.modifiedCount) {
-					toast.success('Successfully Updated!');
-					console.log(data);
-				}
-			});
-	};
-	const handleBlue = (e) => {
+	const handleChange = (e) => {
 		const fieldName = e.target.name;
 		const value = e.target.value;
-		console.log(value);
-		const newData = { ...dataLoad };
-		console.log(newData);
-		newData[fieldName] = value;
-		setDataLoad(newData);
-		console.log(dataLoad);
+		const newMessage = { ...reviews };
+		newMessage[fieldName] = value;
+		setReviews(newMessage);
 	};
-
+	
 	return (
 		<div>
-			<form onSubmit={handleUpdate} className='flex'>
+			<h1 className='text-white lg:mr-20 my-5'>Update for :  {storedReview.serviceTitle}</h1>
+			<form onSubmit={handleUpdate}>
 				<textarea
-					onBlur={handleBlue}
+					onChange={handleChange}
 					className='text-gray-700 p-5'
-					name='review'
-					id=''
+					name='message'
 					cols='30'
 					rows='3'
-					placeholder='Give Your Review'
+					placeholder='Update Your Review'
 				></textarea>
-
-				<button className='btn btn-secondary ml-2'>Submit</button>
+				<button type='submit' className='btn lg:ml-2 lg:mt-8 mt-8'>
+					Update
+				</button>
 			</form>
 		</div>
 	);

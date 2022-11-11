@@ -2,12 +2,10 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AddServices from '../component/AddServices/AddServices';
 import Blog from '../component/Blog/Blog';
-import Details from '../component/Details/Details';
 import Error from '../component/Error/Error';
 import Home from '../component/Home/Home';
 import LogIn from '../component/LogIn/LogIn';
 import Main from '../component/Main/Main';
-import MyReview from '../DestroyFolders/MyReview/MyReview';
 import PrivateRoute from '../component/PrivateRoute/PrivateRoute';
 import Services from '../component/Services/Services';
 import SignUp from '../component/SignUp/SignUp';
@@ -29,6 +27,12 @@ const Routes = () => {
 				{
 					path: '/home',
 					element: <Home></Home>,
+				},
+				{
+					path: '/update/:id',
+					element: <UpdateReview></UpdateReview>,
+					loader: ({ params }) =>
+						fetch(`http://localhost:5000/update/${params.id}`),
 				},
 				{
 					path: '/about',

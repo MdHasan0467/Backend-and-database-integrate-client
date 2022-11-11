@@ -2,16 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MyReviewsLoader = ({ review, handleDelete }) => {
-	// console.log(review);
-	const {
-		_id,
-		message,
-		name,
-		email,
-		serviceTitle,
-		serviceImg,
-	} = review;
-
+	const { _id, message, name,  serviceTitle, serviceImg } = review;
 
 	return (
 		<div>
@@ -38,6 +29,7 @@ const MyReviewsLoader = ({ review, handleDelete }) => {
 												+
 											</button>
 										</Link>
+
 										<button
 											onClick={() => handleDelete(_id)}
 											title='Delete'
@@ -68,9 +60,7 @@ const MyReviewsLoader = ({ review, handleDelete }) => {
 										<span className='title-font font-medium text-white'>
 											{name}
 										</span>
-										<span className='title-font hidden lg:inline-block font-medium text-white'>
-											{email}
-										</span>
+										
 										<span className='text-secondary text-sm'>REVIEWER</span>
 									</span>
 								</a>

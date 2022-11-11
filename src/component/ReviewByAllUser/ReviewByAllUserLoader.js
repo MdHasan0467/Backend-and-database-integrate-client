@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const ReviewByAllUserLoader = ({ getReview, handleDelete, handleUpdate }) => {
-	const { _id, message, name, email, serviceTitle, serviceImg, image, time } =
+	const { _id, message, name,  serviceTitle, serviceImg, image, time } =
 		getReview;
 	console.log(getReview);
 
@@ -64,9 +63,7 @@ const ReviewByAllUserLoader = ({ getReview, handleDelete, handleUpdate }) => {
 										<span className='title-font font-medium text-white'>
 											{name}
 										</span>
-										<span className='title-font hidden lg:inline-block font-medium text-white'>
-											{email}
-										</span>
+										
 										<span className='text-secondary text-sm'>REVIEWER</span>
 									</span>
 								</a>

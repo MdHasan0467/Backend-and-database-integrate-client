@@ -16,6 +16,8 @@ const ServiceDetails = () => {
 	const serviceDetails = useLoaderData();
 	const { _id, img, description, title, fee } = serviceDetails;
 
+	const [change, setChange] = useState(false);
+
 	//! Bring user info and loading From Context API...
 	const { user, loading } = useContext(AuthContext);
 
@@ -50,6 +52,7 @@ const ServiceDetails = () => {
 				console.log(data);
 				if (data.acknowledged) {
 					toast.success('You are successfully added your review !!');
+					setChange(!change);
 					e.target.reset();
 				}
 			})
@@ -63,7 +66,11 @@ const ServiceDetails = () => {
 			.then((data) => {
 				setGetReviews(data.reverse());
 			});
-	}, [_id]);
+	}, [_id, change]);
+
+		if (loading) {
+			return <progress className='progress progress-error w-56'></progress>;
+		}
 
 	return (
 		<div className=' p-6 overflow-hidden py-10 shadow bg-gray-900 text-gray-100 mx-auto'>

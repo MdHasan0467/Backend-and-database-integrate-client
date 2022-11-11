@@ -15,32 +15,22 @@ const MyReviews = () => {
 
 
 
-
-
 	//! Dynamically Title added by custom hook...
 	useTitle('My Reviews');
 
 	//! Bring user info From Context API...
-	const { user, logOut } = useContext(AuthContext);
+	const { user } = useContext(AuthContext);
 
 	//! useState for storing data which get by email && _id for delete data...
 	const [reviews, setReviews] = useState([]);
 
+
 	//! get data from mongodb by user email...&& get JWT token from the local storage by using header...
 	useEffect(() => {
-		fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
-			headers: {
-				authorization: `Bearer ${localStorage.getItem('Login-token')}`,
-			},
-		})
-			.then((res) => {
-				if (res.status === 401 || res.status === 403) {
-					return logOut();
-				}
-				return res.json();
-			})
+		fetch(`https://server-side-roan.vercel.app/reviews?email=${user?.email}`)
+			.then((res) => res.json())
 			.then((data) => setReviews(data));
-	}, [user?.email, logOut]);
+	}, [user?.email]);
 
 	//! Handle Delete
 	const handleDelete = (id) => {
@@ -49,13 +39,12 @@ const MyReviews = () => {
 		);
 
 		if (proceed) {
-			fetch(`http://localhost:5000/reviews/${id}`, {
+			fetch(`https://server-side-roan.vercel.app/reviews/${id}`, {
 				method: 'DELETE',
-				
 			})
 				.then((res) => res.json())
 				.then((data) => {
-					console.log(data);
+					
 					if (data.deletedCount > 0) {
 						toast.error('Delete Successfully ');
 						const remaining = reviews.filter((rvw) => rvw._id !== id);
@@ -64,6 +53,10 @@ const MyReviews = () => {
 				});
 		}
 	};
+
+
+
+			
 
 	return (
 		<div>
@@ -82,14 +75,22 @@ const MyReviews = () => {
 							<MyReviewsLoader
 								key={review._id}
 								review={review}
-								handleDelete={handleDelete}
+								handleDelete={handleDelete}								
 							></MyReviewsLoader>
 						))}
 					</div>
 				)}
 			</div>
+			
+
+
+
+
 		</div>
 	);
 };
 
 export default MyReviews;
+
+
+

@@ -9,7 +9,8 @@ const Slider = () => {
 							alt=''
 							src='https://i0.wp.com/pixelpluck.com/wp-content/uploads/2016/03/photography-slogans-one-liners.jpeg?fit=1080%2C647&ssl=1'
 							className='w-full'
-						/>
+					/>
+					
 						<div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
 							<a href='#slide4' className='btn btn-circle'>
 								❮

@@ -1,4 +1,5 @@
 import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const Static = () => {
     return (
@@ -45,11 +46,15 @@ const Static = () => {
 							</div>
 						</div>
 						<div className='lg:w-1/2 sm:w-1/3 w-full rounded-lg overflow-hidden mt-6 sm:mt-0'>
-							<img
-								className='object-cover object-center w-full h-full'
-								src='https://cdn0.weddingwire.in/article/9086/3_2/960/jpg/16809-creative-wedding-photography-avinash-dhoundhiyal-photography-lead-image.jpeg'
-								alt='stats'
-							/>
+							<PhotoProvider>
+								<PhotoView src='https://cdn0.weddingwire.in/article/9086/3_2/960/jpg/16809-creative-wedding-photography-avinash-dhoundhiyal-photography-lead-image.jpeg'>
+									<img
+										className='object-cover object-center w-full h-full'
+										src='https://cdn0.weddingwire.in/article/9086/3_2/960/jpg/16809-creative-wedding-photography-avinash-dhoundhiyal-photography-lead-image.jpeg'
+										alt='stats'
+									/>
+								</PhotoView>
+							</PhotoProvider>
 						</div>
 					</div>
 				</section>

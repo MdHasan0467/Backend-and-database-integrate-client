@@ -6,9 +6,9 @@
 
 Live site link: <https://assignment-eleven-30dd0.web.app/>
 
-client Repository: <https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MdHasan0467>
+client Repository: <https://github.com/MdHasan0467/Backend-and-database-integrate-client>
 
-server Repository: <https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-MdHasan0467>
+server Repository: <https://github.com/MdHasan0467/Backend-and-database-integrate-server>
 
 ### Steps are ------------------------------------------------
 
